@@ -33,7 +33,7 @@ process.on('unhandledRejection', (error) => {
                             name: `Message:`
                         },
                         {
-                            value: `${error.code}`,
+                            value: `${error.code? error.code : 'Non défini'}`,
                             name: `Code:`
                         }
                     ],
