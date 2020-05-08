@@ -1,9 +1,25 @@
 require('dotenv').config()
+const fs = require('fs')
 const { Collection, Client } = require('discord.js')
 const Websocket = require('./classes/Websocket')
 const prefix = process.env.PREFIX
 const client = new Client()
-client.commands = new Collection()
+const path = require('path')
+client.owners = process.env.OWNERS
+client.aliases = new Collection()
+const commfiles = fs.readdirSync(`${path.join(`${__dirname}`, `./commands`)}`).filter(file => file.endsWith('.js')) //A refaire avec des sous-dossiers
+commfiles.forEach(cmd => {
+    let file = require(`${path.join(`${__dirname}`, `./commands/${cmd}`)}`)
+    client.aliases.set(`${file.name}`, file)
+    file.aliases.forEach(alias => {
+        client.aliases.set(alias, file)
+        console.log(client.aliases.get(alias))
+    })
+})
+
+
+
+
 client.on('ready', async () => {
     new Websocket(process.env.PORT, client)
     console.log('Pret!')
@@ -14,12 +30,14 @@ client.on('ready', async () => {
                 embed: {
                     title: `Connecté !`,
                     description: `Mes erreurs seront envoyées ici`,
-                    color: "GREEN"
+                    color: "GREEN",
+                    timestamp: new Date()
                 }
             })
         })
         .catch((e) => { console.log(e) })
 })
+
 process.on('unhandledRejection', (error) => {
     client.channels.fetch(process.env.ERRCHAN)
         .then((erchan) => {
@@ -33,7 +51,7 @@ process.on('unhandledRejection', (error) => {
                             name: `Message:`
                         },
                         {
-                            value: `${error.code? error.code : 'Non défini'}`,
+                            value: `${error.code ? error.code : 'Non défini'}`,
                             name: `Code:`
                         }
                     ],
@@ -43,5 +61,19 @@ process.on('unhandledRejection', (error) => {
         })
         .catch((e) => { console.log(e) })
 })
+client.on('message', async (message) => {
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
+    const args = message.content.slice(prefix.length).split(/ +/)
+    const command = args.shift().toLowerCase()
+    if(!client.aliases.has(command)){return}
+    let cmd = client.aliases.get(command)
+    try{
+        cmd.execute(message, args)
+    } catch(e){
+        console.log(e)
+    }
 
+
+
+})
 client.login(process.env.TOKEN)
