@@ -5,7 +5,8 @@ const Websocket = require('./classes/Websocket')
 const prefix = process.env.PREFIX
 const client = new Client()
 const path = require('path')
-client.owners = process.env.OWNERS
+client.owners = new Collection()
+client.owners.set('360010766876672000', 'Woomy4680-exe')
 client.aliases = new Collection()
 const commfiles = fs.readdirSync(`${path.join(`${__dirname}`, `./commands`)}`).filter(file => file.endsWith('.js')) //A refaire avec des sous-dossiers
 commfiles.forEach(cmd => {
