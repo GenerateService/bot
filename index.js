@@ -13,7 +13,6 @@ commfiles.forEach(cmd => {
     client.aliases.set(`${file.name}`, file)
     file.aliases.forEach(alias => {
         client.aliases.set(alias, file)
-        console.log(client.aliases.get(alias))
     })
 })
 
