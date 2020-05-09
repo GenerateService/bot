@@ -7,7 +7,7 @@ module.exports = {
         let oldate = Date.now()
         message.channel.send(`Mesuratatation du ping en cours...`)
             .then(async (m) => {
-                await m.edit(`*Pong!* 🎉. Et tout ça en ${Date.now() - oldate} secondes.`)
+                await m.edit(`Pong! 🎉. Et tout ça en ${Date.now() - oldate} secondes. `)
             })
     }
 }
