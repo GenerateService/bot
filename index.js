@@ -12,9 +12,11 @@ const commfiles = fs.readdirSync(`${path.join(`${__dirname}`, `./commands`)}`).f
 commfiles.forEach(cmd => {
     let file = require(`${path.join(`${__dirname}`, `./commands/${cmd}`)}`)
     client.aliases.set(`${file.name}`, file)
+    if(file.aliases){
     file.aliases.forEach(alias => {
         client.aliases.set(alias, file)
     })
+}
 })
 
 

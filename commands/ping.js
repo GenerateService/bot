@@ -1,7 +1,7 @@
 module.exports = {
     name: 'ping',
     description: 'Vérifier le ping du bot.',
-    aliases: ['pong'],
+    category: 'bot',
     execute: (message, args) => {
         let oldate = Date.now()
         message.channel.send(`Mesuratatation du ping en cours...`)
