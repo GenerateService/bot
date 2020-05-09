@@ -13,15 +13,10 @@
     "sequelize": "^5.21.7"
   },
   "scripts": {
-    "dev": "concurrently -k -n \"Typescript,Node\" -p \"[{name}]\" -c \"blue,green\" \"tsc --watch\" \"nodemon build/index.js\"",
-    "start": "pm2 start --name gsbot --log trs.log build/index.js",
-    "build": "tsc"
+    "start": "node index.js"
   },
   "devDependencies": {
-    "@types/node": "^13.13.5",
-    "concurrently": "^5.2.0",
     "nodemon": "^2.0.3",
-    "pm2": "^4.4.0",
-    "typescript": "^3.8.3"
+    "pm2": "^4.4.0"
   }
 }
