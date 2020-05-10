@@ -5,6 +5,7 @@ const Websocket = require('./classes/Websocket')
 const prefix = process.env.PREFIX
 const client = new Client()
 const path = require('path')
+client.prefix = process.env.PREFIX
 client.owners = new Collection()
 client.owners.set('360010766876672000', 'Woomy4680-exe')
 client.aliases = new Collection()
@@ -69,6 +70,7 @@ client.on('message', async (message) => {
     const command = args.shift().toLowerCase()
     if(!client.aliases.has(command)){return}
     let cmd = client.aliases.get(command)
+    if(cmd.ownerOnly && !client.owners.has(message.author.id)) return message.channel.send(`Cette commande ne peut être utilisée que part un owner du bot`)
     try{
         cmd.execute(message, args)
     } catch(e){
