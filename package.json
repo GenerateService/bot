@@ -1,0 +1,17 @@
+{
+  "name": "generateservicebot",
+  "version": "2.0.0",
+  "description": "Un bot discord",
+  "main": "index.js",
+  "repository": "https://github.com/GenerateService/bot.git",
+  "author": "GenerateService Team",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "discordjs-moka": "^2.6.0",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.1.0"
+  }
+}
