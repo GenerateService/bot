@@ -9,7 +9,7 @@
   "dependencies": {
     "@keyv/sqlite": "^2.0.2",
     "discord.js": "^12.2.0",
-    "discordjs-moka": "^2.6.0",
+    "discordjs-moka": "^3.1.0",
     "dotenv": "^8.2.0",
     "keyv": "^4.0.1"
   },
