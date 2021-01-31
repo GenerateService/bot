@@ -11,7 +11,7 @@
     "discord.js": "^12.2.0",
     "discordjs-moka": "^2.6.0",
     "dotenv": "^8.2.0",
-    "keyv": "^4.0.1"
+    "keyv": "^4.0.3"
   },
   "devDependencies": {
     "eslint": "^7.1.0"
