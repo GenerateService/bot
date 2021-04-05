@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@keyv/sqlite": "^2.0.2",
-    "discord.js": "^12.2.0",
+    "discord.js": "^12.5.3",
     "discordjs-moka": "^2.6.0",
     "dotenv": "^8.2.0",
     "keyv": "^4.0.1"
