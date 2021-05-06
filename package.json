@@ -10,7 +10,7 @@
     "@keyv/sqlite": "^2.0.2",
     "discord.js": "^12.2.0",
     "discordjs-moka": "^2.6.0",
-    "dotenv": "^8.2.0",
+    "dotenv": "^9.0.0",
     "keyv": "^4.0.1"
   },
   "devDependencies": {
